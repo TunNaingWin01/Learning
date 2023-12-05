@@ -143,37 +143,82 @@ Let's continue with our football betting app! This time, we have a map with a lo
 GOOD LUCK 😀
 */
 
-const gameEvents = new Map([
-    [17, '⚽ GOAL'],
-    [36, '🔁 Substitution'],
-    [47, '⚽ GOAL'],
-    [61, '🔁 Substitution'],
-    [64, '🟡 Yellow card'],
-    [69, '🔴 Red card'],
-    [70, '🔁 Substitution'],
-    [72, '🔁 Substitution'],
-    [76, '⚽ GOAL'],
-    [80, '⚽ GOAL'],
-    [92, '🟡 Yellow card'],
-]);
+// const gameEvents = new Map([
+//     [17, '⚽ GOAL'],
+//     [36, '🔁 Substitution'],
+//     [47, '⚽ GOAL'],
+//     [61, '🔁 Substitution'],
+//     [64, '🟡 Yellow card'],
+//     [69, '🔴 Red card'],
+//     [70, '🔁 Substitution'],
+//     [72, '🔁 Substitution'],
+//     [76, '⚽ GOAL'],
+//     [80, '⚽ GOAL'],
+//     [92, '🟡 Yellow card'],
+// ]);
 
-const events = [...new Set(gameEvents.values())]; 
-console.log(events);
+// const events = [...new Set(gameEvents.values())];
+// console.log(events);
 
-gameEvents.delete(64);
-console.log(gameEvents);
+// gameEvents.delete(64);
+// console.log(gameEvents);
 
-const time = [...gameEvents.keys()].pop();
-console.log(time);
+// const time = [...gameEvents.keys()].pop();
+// console.log(time);
 
-console.log(`An event happened, on average, every ${time / gameEvents.size} minutes`);
+// console.log(`An event happened, on average, every ${time / gameEvents.size} minutes`);
 
-for (const [minu, event] of gameEvents) {
-    minu < 45 ? console.log(`[FIRST HALF] ${minu}: ${event}`) : console.log(`[SECOND HALF] ${minu}: ${event}`);
-};
+// for (const [minu, event] of gameEvents) {
+//     minu < 45 ? console.log(`[FIRST HALF] ${minu}: ${event}`) : console.log(`[SECOND HALF] ${minu}: ${event}`);
+// };
 
 // Another way
-for (const [min, event] of gameEvents) {
-    const half = min <= 45 ? 'FIRST' : 'SECOND';
-    console.log(`[${half} HALF] ${min}: ${event}`);
-};
+// for (const [min, event] of gameEvents) {
+//     const half = min <= 45 ? 'FIRST' : 'SECOND';
+//     console.log(`[${half} HALF] ${min}: ${event}`);
+// };
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log(plane[3]);
+console.log(plane.length);
+console.log('B737'.length);
+
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.indexOf('Portugal'));
+console.log(airline.indexOf('portugal'));
+
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+console.log(airline.slice(4, 7));
+console.log(airline.slice(8, 16));
+
+// --- The length of a extracted string is always going to be end minus beginning ---
+
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+console.log(airline.slice(1, -1));
+console.log(airline.slice(-2));
+
+const checkMiddleSeat = function (seat) {
+    // B and E are middle seat
+    const s = seat.slice(-1);
+    if (s === 'B' || s === 'E') 
+        console.log('You got the middle seat 😐');
+    else 
+        console.log('You got lucky 😎');
+}
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+console.log(new String('Tun'));
+console.log(typeof new String('Tun'));
+console.log(typeof new String('Tun').slice(1));
