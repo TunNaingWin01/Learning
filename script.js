@@ -179,46 +179,115 @@ GOOD LUCK 😀
 // };
 
 const airline = 'TAP Air Portugal';
-const plane = 'A320';
 
-console.log(plane[0]);
-console.log(plane[1]);
-console.log(plane[2]);
-console.log(plane[3]);
-console.log(plane.length);
-console.log('B737'.length);
+console.log(airline.toLocaleLowerCase());
+console.log('naing'.toUpperCase());
 
-console.log(airline.indexOf('r'));
-console.log(airline.lastIndexOf('r'));
-console.log(airline.indexOf('Portugal'));
-console.log(airline.indexOf('portugal'));
+//Fix capitalization in name
+const passenger = 'jOnAS';
+const passengerLower = passenger.toLocaleLowerCase();
+const passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
 
-console.log(airline.slice(4));
-console.log(airline.slice(4, 7));
-console.log(airline.slice(4, 7));
-console.log(airline.slice(8, 16));
+const debugName = function (name) {
+    const generalName = name.toLocaleLowerCase();
+    return generalName[0].toUpperCase() + generalName.slice(1);
+}
+
+console.log(debugName('tunNaingWIN'));
+console.log(debugName('jOnAS'));
+
+//Comparing email
+const email = 'hello@jonas.io';
+const loginEmail = '   Hello@Jonas.Io  \n';
+
+// const loweremail = loginEmail.toLocaleLowerCase();
+// const trimmedEmail = loweremail.trim();
+// console.log(trimmedEmail);
+
+const normalizeEmail = loginEmail.toLocaleLowerCase().trim();
+console.log(normalizeEmail);
+console.log(email === normalizeEmail);
+
+// replacing
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+console.log('TunNaingWin'.replace('NaingWin', 'NaungTun'));
+
+const announcement = 'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcement.replaceAll('door', 'gate'));
+
+// ---- regular expression ---- write string between slashes instead of quotes and (g) stands for global
+console.log(announcement.replace(/door/g, 'gate'));
+
+// Boolean
+const plane = 'Airbus A320neo';
+console.log(plane.includes('A320'));
+console.log(plane.includes('Boeing'));
+console.log(plane.startsWith('Air'));
+console.log(plane.endsWith('neo'));
+
+plane.startsWith('Airbus') && plane.endsWith('neo') && console.log('Part of the New Airbus family');
+
+console.log('TunNaingWin'.startsWith('Tun'));
+
+// Practice exercise
+const checkBaggage = function (items) {
+    const baggage = items.toLocaleLowerCase();
+    
+    if (baggage.includes('knife') || baggage.includes('gun')) {
+        console.log('You are NOT allowed on board');
+    } else {
+        console.log('Welcome aboard!');
+    }
+};
+
+checkBaggage('I have a laptop, some Food and a pocket Knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snacks and a gun for protection');
+
+// const plane = 'A320';
+
+// console.log(plane[0]);
+// console.log(plane[1]);
+// console.log(plane[2]);
+// console.log(plane[3]);
+// console.log(plane.length);
+// console.log('B737'.length);
+
+// console.log(airline.indexOf('r'));
+// console.log(airline.lastIndexOf('r'));
+// console.log(airline.indexOf('Portugal'));
+// console.log(airline.indexOf('portugal'));
+
+// console.log(airline.slice(4));
+// console.log(airline.slice(4, 7));
+// console.log(airline.slice(4, 7));
+// console.log(airline.slice(8, 16));
 
 // --- The length of a extracted string is always going to be end minus beginning ---
 
-console.log(airline.slice(0, airline.indexOf(' ')));
-console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+// console.log(airline.slice(0, airline.indexOf(' ')));
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1));
 
-console.log(airline.slice(1, -1));
-console.log(airline.slice(-2));
+// console.log(airline.slice(1, -1));
+// console.log(airline.slice(-2));
 
-const checkMiddleSeat = function (seat) {
-    // B and E are middle seat
-    const s = seat.slice(-1);
-    if (s === 'B' || s === 'E') 
-        console.log('You got the middle seat 😐');
-    else 
-        console.log('You got lucky 😎');
-}
+// const checkMiddleSeat = function (seat) {
+//     // B and E are middle seat
+//     const s = seat.slice(-1);
+//     if (s === 'B' || s === 'E') 
+//         console.log('You got the middle seat 😐');
+//     else 
+//         console.log('You got lucky 😎');
+// }
 
-checkMiddleSeat('11B');
-checkMiddleSeat('23C');
-checkMiddleSeat('3E');
+// checkMiddleSeat('11B');
+// checkMiddleSeat('23C');
+// checkMiddleSeat('3E');
 
-console.log(new String('Tun'));
-console.log(typeof new String('Tun'));
-console.log(typeof new String('Tun').slice(1));
+// console.log(new String('Tun'));
+// console.log(typeof new String('Tun'));
+// console.log(typeof new String('Tun').slice(1));
