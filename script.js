@@ -361,9 +361,9 @@ The input will come from a textarea inserted into the DOM (see code below), and 
 
 THIS TEST DATA (pasted to textarea)
 underscore_case
-first_name
+  first_name
 Some_Variable 
-calculate_AGE
+  calculate_AGE
 delayed_departure
 
 SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
@@ -386,30 +386,35 @@ GOOD LUCK 😀
 document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
 document.querySelector('button').innerHTML = 'Click';
+let result = [];
 
 document.querySelector('button').addEventListener('click', () => {
+    let i = 0;
     const text = document.querySelector('textarea').value.toLocaleLowerCase();
     const letter = text.split('\n');
-    console.log(letter);
-
+    // console.log(letter);
+    
     for (const w of letter) {
-        const word = w.split('_');
-        console.log(word);
-        for (const camelC of word) {
-            if (camelC === word[0]) {
+        i++;
+        result = [];
+        const word = w.trim().split('_');
+        // console.log('word', word);
+        for (const m of word) {
+            if (m === word[0]) {
+                result.push(m);
                 continue;
             } else {
-                camelC[0].toUpperCase();
+                result.push(m.replace(m[0], m[0].toUpperCase()));
             }
-        }
+        } 
+        const finalResult = result.join('').padEnd(20, ' ') + `${'✅'.repeat(i)}`;
+        console.log(finalResult);
     }
 });
 
-document.querySelector('textarea').innerHTML = 'Info_myanmar_university\nunderscore_score';
-
 // INFO_MYANMAR_UNIVERSITY
 // underscore_case
-//  first_name
+// first_name
 // Some_Variable 
-//   calculate_AGE
+// calculate_AGE
 // delayed_departure
