@@ -293,59 +293,123 @@ GOOD LUCK 😀
 // console.log(typeof new String('Tun').slice(1));
 
 // Split and Join
-console.log('a+very+nice+string'.split('+'));
-console.log('Jonas Schmedtmann'.split(' '));
+// console.log('a+very+nice+string'.split('+'));
+// console.log('Jonas Schmedtmann'.split(' '));
 
-const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
-console.log(firstName, lastName);
+// const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+// console.log(firstName, lastName);
 
-const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
-console.log(newName);
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
 
-const capitalizeName = function (username) {
-    const name = username.toLowerCase();
-    const names = name.split(' ');
-    let namesUpper = [];
+// const capitalizeName = function (username) {
+//     const name = username.toLowerCase();
+//     const names = name.split(' ');
+//     let namesUpper = [];
 
-    for (const n of names) {
+    // for (const n of names) {
         //    namesUpper.push(n[0].toUpperCase() + n.slice(1));
         // --- Another method ---
-        namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
-    }
-    console.log(namesUpper.join(' '));
-};
+//         namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+//     }
+//     console.log(namesUpper.join(' '));
+// };
 
-capitalizeName('jessica ann smith devis')
-capitalizeName('TUN NAING WIN')
-capitalizeName('TUN NAUNG TUN')
+// capitalizeName('jessica ann smith devis')
+// capitalizeName('TUN NAING WIN')
+// capitalizeName('TUN NAUNG TUN')
 
 // Padding
-const message = 'Go to gate 23!';
-console.log(message.padStart(25, '.').padEnd(30, '+'));
-console.log('Tun'.padStart(25, ' ').padEnd(30, '+'));
+// const message = 'Go to gate 23!';
+// console.log(message.padStart(25, '.').padEnd(30, '+'));
+// console.log('Tun'.padStart(25, ' ').padEnd(30, '+'));
 
-const maskCreditCard = function (number) {
-    const str = number + '';
-    const last = str.slice(-4);
-    return last.padStart(str.length, '*')
-};
+// const maskCreditCard = function (number) {
+//     const str = number + '';
+//     const last = str.slice(-4);
+//     return last.padStart(str.length, '*')
+// };
 
-console.log(maskCreditCard(2984848558558));
-console.log(maskCreditCard(123456789));
-console.log(maskCreditCard(123456));
+// console.log(maskCreditCard(2984848558558));
+// console.log(maskCreditCard(123456789));
+// console.log(maskCreditCard(123456));
 
-const check = 123 + '';
-console.log(typeof check);
-console.log(check.length);
+// const check = 123 + '';
+// console.log(typeof check);
+// console.log(check.length);
 
 // Repeat
-const message2 = 'Bad weather... All Departure Delayed... ';
-console.log(message2.repeat(5));
+// const message2 = 'Bad weather... All Departure Delayed... ';
+// console.log(message2.repeat(5));
 
-const planesInLine = function (n) {
-    console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`);
-}
+// const planesInLine = function (n) {
+//     console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`);
+// }
 
-planesInLine(5);
-planesInLine(8);
-planesInLine(12);
+// planesInLine(5);
+// planesInLine(8);
+// planesInLine(12);
+
+
+
+// Coding Challenge #4
+
+/* 
+Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+
+The input will come from a textarea inserted into the DOM (see code below), and conversion will happen when the button is pressed.
+
+THIS TEST DATA (pasted to textarea)
+underscore_case
+first_name
+Some_Variable 
+calculate_AGE
+delayed_departure
+
+SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
+underscoreCase      ✅
+firstName           ✅✅
+someVariable        ✅✅✅
+calculateAge        ✅✅✅✅
+delayedDeparture    ✅✅✅✅✅
+
+HINT 1: Remember which character defines a new line in the textarea 😉
+HINT 2: The solution only needs to work for a variable made out of 2 words, like a_b
+HINT 3: Start without worrying about the ✅. Tackle that only after you have the variable name conversion working 😉
+HINT 4: This challenge is difficult on purpose, so start watching the solution in case you're stuck. Then pause and continue!
+
+Afterwards, test with your own test data!
+
+GOOD LUCK 😀
+*/
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+document.querySelector('button').innerHTML = 'Click';
+
+document.querySelector('button').addEventListener('click', () => {
+    const text = document.querySelector('textarea').value.toLocaleLowerCase();
+    const letter = text.split('\n');
+    console.log(letter);
+
+    for (const w of letter) {
+        const word = w.split('_');
+        console.log(word);
+        for (const camelC of word) {
+            if (camelC === word[0]) {
+                continue;
+            } else {
+                camelC[0].toUpperCase();
+            }
+        }
+    }
+});
+
+document.querySelector('textarea').innerHTML = 'Info_myanmar_university\nunderscore_score';
+
+// INFO_MYANMAR_UNIVERSITY
+// underscore_case
+//  first_name
+// Some_Variable 
+//   calculate_AGE
+// delayed_departure
