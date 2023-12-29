@@ -386,31 +386,45 @@ GOOD LUCK 😀
 document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
 document.querySelector('button').innerHTML = 'Click';
-let result = [];
 
-document.querySelector('button').addEventListener('click', () => {
-    let i = 0;
-    const text = document.querySelector('textarea').value.toLocaleLowerCase();
-    const letter = text.split('\n');
+document.querySelector('button').addEventListener('click', function () {
+    const text = document.querySelector('textarea').value.toLowerCase();
+    const rows = text.split('\n');
+    
+    for (const [i, r] of rows.entries()) {
+        const trimmed = r.trim();
+        const [first, second] = trimmed.split('_');
+        const result = `${first}${second.replace(second[0], second[0].toUpperCase())}`;
+        const output = `${result.padEnd(20, ' ')}${'✅'.repeat(i + 1)}`;
+        console.log(output);
+    }
+})
+
+// let result = [];
+
+// document.querySelector('button').addEventListener('click', () => {
+//     let i = 0;
+//     const text = document.querySelector('textarea').value.toLocaleLowerCase();
+//     const letter = text.split('\n');
     // console.log(letter);
     
-    for (const w of letter) {
-        i++;
-        result = [];
-        const word = w.trim().split('_');
-        // console.log('word', word);
-        for (const m of word) {
-            if (m === word[0]) {
-                result.push(m);
-                continue;
-            } else {
-                result.push(m.replace(m[0], m[0].toUpperCase()));
-            }
-        } 
-        const finalResult = result.join('').padEnd(20, ' ') + `${'✅'.repeat(i)}`;
-        console.log(finalResult);
-    }
-});
+//     for (const w of letter) {
+//         i++;
+//         result = [];
+//         const word = w.trim().split('_');
+//         // console.log('word', word);
+//         for (const m of word) {
+//             if (m === word[0]) {
+//                 result.push(m);
+//                 continue;
+//             } else {
+//                 result.push(m.replace(m[0], m[0].toUpperCase()));
+//             }
+//         } 
+//         const finalResult = result.join('').padEnd(20, ' ') + `${'✅'.repeat(i)}`;
+//         console.log(finalResult);
+//     }
+// });
 
 // INFO_MYANMAR_UNIVERSITY
 // underscore_case
